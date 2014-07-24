@@ -23,4 +23,6 @@ doc/
 .DS_Store
 .idea
 .secret
-.subl*
+*.sublime-*
+/public/images/tmp
+/public/images/uploads

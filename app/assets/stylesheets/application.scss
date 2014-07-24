@@ -1,0 +1,248 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ //= require foundation_and_overrides
+
+ *= require foundation
+ */
+@import "foundation_and_overrides";
+
+body {
+  background: #dcdddf url(http://cssdeck.com/uploads/media/items/7/7AF2Qzt.png)!important;
+  color: #000;
+  font: 14px Arial;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.clearfix:after, form:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.top-bar {
+  background: #393939;
+}
+.container {
+  margin: 25px auto;
+  position: relative;
+  width: 900px;
+}
+.main-menu {
+  border: 1px solid blue;
+}
+
+#content {
+  background: #f9f9f9;
+  background: -webkit-linear-gradient(top, rgba(248, 248, 248, 1) 0%, rgba(249, 249, 249, 1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(248, 248, 248, 1)), to(rgba(249, 249, 249, 1)));
+  background: -webkit-linear-gradient(top, rgba(248, 248, 248, 1) 0%, rgba(249, 249, 249, 1) 100%);
+  background: linear-gradient(top, rgba(248, 248, 248, 1) 0%, rgba(249, 249, 249, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f8f8f8', endColorstr='#f9f9f9',GradientType=0 );
+  -webkit-box-shadow: 0 1px 0 #fff inset;
+  -ms-box-shadow: 0 1px 0 #fff inset;
+  -o-box-shadow: 0 1px 0 #fff inset;
+  box-shadow: 0 1px 0 #fff inset;
+  border: 1px solid #c4c6ca;
+  margin: 0 auto;
+  padding: 25px 0;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+  max-width: 400px;
+  h1 {
+    color: #7E7E7E;
+    font: bold 25px Helvetica, Arial, sans-serif;
+    letter-spacing: -0.05em;
+    line-height: 20px;
+    margin: 10px 0 30px;
+    position: relative;
+    &:before {
+      content: "";
+      height: 1px;
+      position: absolute;
+      top: 10px;
+      width: 27%;
+    }
+    &:after {
+      content: "";
+      height: 1px;
+      position: absolute;
+      top: 10px;
+      width: 27%;
+      background: rgb(126, 126, 126);
+      background: -webkit-linear-gradient(left, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      background: -webkit-gradient(linear, left top, right top, from(rgba(126, 126, 126, 1)), to(rgba(255, 255, 255, 1)));
+      background: -webkit-linear-gradient(left, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      background: linear-gradient(left, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      right: 0;
+    }
+    &:before {
+      background: rgb(126, 126, 126);
+      background: -webkit-linear-gradient(right, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      background: -webkit-gradient(linear, right top, left top, from(rgba(126, 126, 126, 1)), to(rgba(255, 255, 255, 1)));
+      background: -webkit-linear-gradient(right, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      background: linear-gradient(right, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      left: 0;
+    }
+  }
+  &:after, &:before {
+    background: #f9f9f9;
+    background: -webkit-linear-gradient(top, rgba(248, 248, 248, 1) 0%, rgba(249, 249, 249, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(248, 248, 248, 1)), to(rgba(249, 249, 249, 1)));
+    background: -webkit-linear-gradient(top, rgba(248, 248, 248, 1) 0%, rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(top, rgba(248, 248, 248, 1) 0%, rgba(249, 249, 249, 1) 100%);
+    border: 1px solid #c4c6ca;
+    content: "";
+    display: block;
+    height: 100%;
+    left: -1px;
+    position: absolute;
+    width: 100%;
+  }
+  &:after {
+    -webkit-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    transform: rotate(2deg);
+    top: 0;
+    z-index: -1;
+  }
+  &:before {
+    -webkit-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+    top: 0;
+    z-index: -2;
+  }
+  form {
+    margin: 0 20px;
+    position: relative;
+    input {
+      &[type="email"], &[type="password"], &[type="password_confirmation"] {
+        -o-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-box-shadow: 0 1px 0 white, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
+        -ms-box-shadow: 0 1px 0 white, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
+        -o-box-shadow: 0 1px 0 white, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
+        box-shadow: 0 1px 0 white, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        background: #eae7e7 url(http://cssdeck.com/uploads/media/items/8/8bcLQqF.png) no-repeat 10px -53px;
+        border: 1px solid #c8c8c8;
+        color: #777;
+        font: 13px Helvetica, Arial, sans-serif;
+        margin: 15px auto;
+        padding: 20px 10px 20px 45px;
+        width: 80%;
+      }
+      &[type="email"]:focus, &[type="password"]:focus {
+        -webkit-box-shadow: 0 0 2px #ed1c24 inset;
+        -ms-box-shadow: 0 0 2px #ed1c24 inset;
+        -o-box-shadow: 0 0 2px #ed1c24 inset;
+        box-shadow: 0 0 2px #ed1c24 inset;
+        background-color: #fff;
+        border: 1px solid #ed1c24;
+        outline: none;
+      }
+    }
+  }
+}
+
+#user_email {
+  background-position: 10px 10px !important;
+}
+#content form {
+  input[type="submit"] {
+    background: rgb(254, 231, 154);
+    background: -webkit-linear-gradient(top, rgba(254, 231, 154, 1) 0%, rgba(254, 193, 81, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(254, 231, 154, 1)), to(rgba(254, 193, 81, 1)));
+    background: -webkit-linear-gradient(top, rgba(254, 231, 154, 1) 0%, rgba(254, 193, 81, 1) 100%);
+    background: linear-gradient(top, rgba(254, 231, 154, 1) 0%, rgba(254, 193, 81, 1) 100%);
+    -o-border-radius: 30px;
+    border-radius: 30px;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+    -ms-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+    -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+    border: 1px solid #D69E31;
+    color: #85592e;
+    cursor: pointer;
+    font: bold 15px Helvetica, Arial, sans-serif;
+    height: 35px;
+    margin: 20px 25px 35px 15px;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    padding: 0 25px;
+
+    &:hover {
+      background: rgb(254, 193, 81);
+      background: -webkit-linear-gradient(top, rgba(254, 193, 81, 1) 0%, rgba(254, 231, 154, 1) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, from(rgba(254, 193, 81, 1)), to(rgba(254, 231, 154, 1)));
+      background: -webkit-linear-gradient(top, rgba(254, 193, 81, 1) 0%, rgba(254, 231, 154, 1) 100%);
+      background: linear-gradient(top, rgba(254, 193, 81, 1) 0%, rgba(254, 231, 154, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
+    }
+  }
+  div a {
+    color: #004a80;
+    float: right;
+    font-size: 12px;
+    margin: 30px 15px 0 0;
+    text-decoration: underline;
+  }
+}
+label {
+  display: inline-block;
+  padding-left: 10px;
+  color: #7E7E7E;
+}
+
+.button {
+  background: rgb(247, 249, 250);
+  background: -webkit-linear-gradient(top, rgba(247, 249, 250, 1) 0%, rgba(240, 240, 240, 1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(247, 249, 250, 1)), to(rgba(240, 240, 240, 1)));
+  background: -webkit-linear-gradient(top, rgba(247, 249, 250, 1) 0%, rgba(240, 240, 240, 1) 100%);
+  background: linear-gradient(top, rgba(247, 249, 250, 1) 0%, rgba(240, 240, 240, 1) 100%);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  -ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  -o-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  border-top: 1px solid #CFD5D9;
+  padding: 15px 0;
+  a {
+    color: #7E7E7E;
+    font-size: 17px;
+    padding: 2px 0 2px 40px;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    &:hover {
+      background-position: 0 -135px;
+      color: #00aeef;
+    }
+  }
+}
+
