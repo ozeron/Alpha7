@@ -1,0 +1,17 @@
+local: &local 
+  adapter: postgresql
+  user: postgres
+  password: 
+  host: localhost
+
+development:
+  <<: *local 
+  database: alpha7_dev
+
+test:
+  <<: *local
+  database: alpha7_test
+
+production:
+  <<: *local
+  database: alpha7_production
