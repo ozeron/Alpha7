@@ -1,0 +1,19 @@
+local: &local 
+  adapter: postgres
+  username: postgres
+  password:
+  host: localhost
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *local
+  database: alpha7_dev
+
+test:
+  <<: *local
+  database: alpha7_test
+
+production:
+  <<: *local
+  database: alpha7_production
