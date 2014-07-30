@@ -11,13 +11,21 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
+gem 'devise', '~> 3.2.4'
+gem 'enumerize', '~> 0.8.0'
+gem 'carrierwave'
+gem "mini_magick"
+gem 'factory_girl_rails'
+gem 'faker', '~> 1.4.2'
+gem 'slim'
+gem 'compass-rails'
+gem 'foundation-rails'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-remote'
-  gem 'factory_girl_rails'
-  gem 'faker', '~> 1.2.0'
 end
 
 group :test do
@@ -26,20 +34,11 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'webmock'
+  gem 'shoulda'
 end
 
 group :production do
   gem 'rails_12factor'
 end
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
 

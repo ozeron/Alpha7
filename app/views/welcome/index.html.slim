@@ -1,0 +1,26 @@
+nav.top-bar data-topbar=""
+  ul.title-area
+    li.name
+      h1 
+        a href="#" Main
+    li.toggle-topbar.menu-icon 
+      a href="#"
+        span Menu
+  section.top-bar-section
+    ul.left
+      li
+        a href="#" First Page
+      li 
+        a href="#" Second Page
+div.large-4.small-4.large-centered.small-centered.columns
+  h1.text-center Main Page
+div.small-12.small-centered.columns 
+  section#content
+    div
+      h1 My Profile
+      div
+        | #{button_to "Update", edit_user_registration_path, method: :get}
+        | #{button_to "Logout", destroy_user_session_path, data: { confirm: "Are you sure?" }, method: :delete}
+
+
+
