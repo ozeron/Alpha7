@@ -8,15 +8,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
-  enumerize :role, in: [:user, :admin], default: :user
-  enumerize :gender, in: {male: 0, female: 1, other: 2}
+  enumerize :role, in: {user:0, admin:1}, default: :user
+  enumerize :gender, in: {male: 0, female: 1, other: 2}, default: :other
 
   mount_uploader :avatar, AvatarUploader
-
   def full_name
-      fn = "#{first_name} #{last_name}"
-      return email  if fn == " "
-      fn.lstrip.rstrip
+    fn = "#{first_name} #{last_name}"
+    return email  if fn == " "
+    fn.lstrip.rstrip
   end
 
+  def admin?
+    role.to_sym == :admin
+  end
 end

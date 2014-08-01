@@ -3,11 +3,6 @@
   padding-bottom: 40px;
 }
 
-.column, .columns {
-  padding-right: 0rem;
-  padding-left: 0rem;
-}
-
 .top-bar {
   padding: 0 25px 60px 25px;
   &.expanded .title-area {
@@ -28,7 +23,7 @@
   height: 45px;
 }
 
-.avatar:before {
+.avatar {
   display: none;
 }
 
@@ -36,7 +31,7 @@
   .top-bar-section li {
     margin-top: 10px;
   }
-  .avatar:before {
+  .avatar {
     display: block;
   }
 }

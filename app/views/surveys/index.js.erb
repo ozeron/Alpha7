@@ -1,0 +1,6 @@
+$('#surveys').append('<%= j render(@surveys) %>');
+<% if @surveys.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@surveys) %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>
