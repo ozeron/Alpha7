@@ -15,5 +15,11 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
-
+//= require jquery
+//= require jquery_ujs
+//= require the_role_editinplace
 $(function(){ $(document).foundation(); });
+
+document.getElementById("user_avatar").onchange = function () {
+    document.getElementById("uploadFile").value = this.value;
+};
