@@ -12,4 +12,11 @@ class User < ActiveRecord::Base
   enumerize :gender, in: {male: 0, female: 1, other: 2}
 
   mount_uploader :avatar, AvatarUploader
+
+  def full_name
+      fn = "#{first_name} #{last_name}"
+      return email  if fn == " "
+      fn.lstrip.rstrip
+  end
+
 end

@@ -3,10 +3,39 @@ html lang="en"
   head
     meta charset="utf-8"
     mmeta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no"
-    title= content_for?(:title) ? yield(:title) : "foundation-rails"
+    title= content_for?(:title) ? yield(:title) : "Alpha 7"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
   body
+    .header
+      .large-8.large-centered.columns.clearfix
+        nav.top-bar data-topbar=""
+          ul.title-area
+            li.name
+              =link_to image_tag("http://habrastorage.org/files/5e5/6e3/140/5e56e31400db4f05b7a5940d52ad3e3b.png"), root_path
+            li.toggle-topbar.menu-icon
+              =link_to "Menu"
+          section.top-bar-section
+            ul.right
+              -if current_user
+                - if current_user.avatar.url.present?
+                  .avatar =image_tag current_user.avatar.url(:thumb)
+                li.has-dropdown
+                  =link_to current_user.full_name
+                  ul.dropdown
+                    li
+                      =link_to "Edit Profile", edit_user_registration_path
+              -else
+                li
+                  =link_to "Sing In", new_user_session_path
+              li
+                -if current_user
+                  =link_to "Log Out", destroy_user_session_path, data: { confirm: "Are you sure?" }, method: :delete
+                -else
+                  =link_to "Sing Up", new_user_registration_path
+              
+                 
     = yield
     = javascript_include_tag "application"
+

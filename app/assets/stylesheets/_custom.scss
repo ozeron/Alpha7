@@ -1,0 +1,45 @@
+.top-bar {
+  background: #354657;
+  padding-bottom: 40px;
+}
+
+.column, .columns {
+  padding-right: 0rem;
+  padding-left: 0rem;
+}
+
+.top-bar {
+  padding: 0 25px 60px 25px;
+  &.expanded .title-area {
+    background: #354657;
+  }
+}
+
+.top-bar-section {
+  li:not(.has-form) a:not(.button) {
+    background: #354657!important;
+  }
+  z-index: 10;
+}
+
+.top-bar .name {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.avatar:before {
+  display: none;
+}
+
+@media only screen and (min-width: 40.063em) {
+  .top-bar-section li {
+    margin-top: 10px;
+  }
+  .avatar:before {
+    display: block;
+  }
+}
+input[type="file"], input[type="checkbox"], input[type="radio"], select {
+  margin: 2rem 0 1rem 1rem;
+  }
