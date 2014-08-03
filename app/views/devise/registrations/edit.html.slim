@@ -27,6 +27,12 @@ div.small-10.small-centered.large-8.large-centered.medium-8.medium-centered.colu
           =f.text_field :last_name, placeholder: 'Last Name'
         div
           =f.date_field :birthday, placeholder: 'Birthday'
+        div
+          span Gender
+          =f.radio_button :gender, 'male'
+          =label :user_gender, 'male'
+          =f.radio_button :gender, 'female'
+          =label :user_gender, 'female'  
           br/
           span Change Password
         br/
@@ -36,13 +42,6 @@ div.small-10.small-centered.large-8.large-centered.medium-8.medium-centered.colu
           = f.password_field :password_confirmation,autocomplete: "off", placeholder: 'Password confirmation'
         div
           = f.password_field :current_password, autocomplete: "off", placeholder: 'Current password'
-        div
-          br/
-          span Gender
-          =f.radio_button :gender, 'male'
-          =label :user_gender, 'male'
-          =f.radio_button :gender, 'female'
-          =label :user_gender, 'female'
       div.row   
         div.large-12.columns #{button_to "Update", edit_user_registration_path, method: :PATCH}
       div.row
