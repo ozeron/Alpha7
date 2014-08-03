@@ -22,7 +22,8 @@ gem 'compass-rails'
 gem 'foundation-rails'
 gem 'the_role', '~> 2.5.2'
 gem 'the_role_bootstrap3_ui'
-
+gem 'will_paginate'
+gem 'cancancan'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'

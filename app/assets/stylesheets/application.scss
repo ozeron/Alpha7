@@ -152,17 +152,16 @@ label {
   text-align: center;
 }
 .avatar {
-  display: inline-block;
   background: #fff;
   float:left;
   border: 1px solid #fff;
   margin-top: 10px;
   margin-right: 10px;
+    img {
+    max-width: 50px;
+  }
+}
 
-}
-.avatar img {
-  max-width: 50px;
-}
 
 .btn {
     background: #fbcb15;
