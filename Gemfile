@@ -20,7 +20,8 @@ gem 'faker', '~> 1.4.2'
 gem 'slim'
 gem 'compass-rails'
 gem 'foundation-rails'
-
+gem 'will_paginate'
+gem 'cancancan'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'

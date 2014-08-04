@@ -1,0 +1,12 @@
+.row
+  .small-12.column
+    h1
+      |Surveys
+  .small-12.column
+    =link_to "Create Your own!", new_survey_path, class: "row button small-12 column radius"
+
+    #surveys.small-12.column
+      =render @surveys
+    br
+  .paginate.small-12.column
+    =will_paginate @surveys 

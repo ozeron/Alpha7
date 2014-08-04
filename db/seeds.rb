@@ -5,4 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-FactoryGirl.create(:admin) if  User.first.nil?
+FactoryGirl.create(:admin, email:"admin@alpha7.com", password:"admin123456") if  User.first.nil?
