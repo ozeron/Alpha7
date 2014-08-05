@@ -26,7 +26,7 @@ class ProfilesController < Devise::RegistrationsController
   end
  
   def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :gender, :birthday, :avatar, :avatar_cache, :remove_avatar)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :gender, :birthday, :avatar, :avatar_cache, :remove_avatar, :valid_date?)
   end
 
   def after_update_path_for(resource)
