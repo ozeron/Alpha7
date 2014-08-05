@@ -22,6 +22,7 @@ gem 'compass-rails'
 gem 'foundation-rails'
 gem 'will_paginate'
 gem 'cancancan'
+gem 'fog', '~> 1.23.0'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'
