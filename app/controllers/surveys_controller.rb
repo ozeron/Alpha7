@@ -5,9 +5,9 @@ class SurveysController < ApplicationController
 
   def index
     if params[:query].present?
-      @surveys = Survey.search(params[:query], page: params[:page])
+      @surveys = Survey.search(params[:query], page: params[:page], fields: [{title: :word_start}])
     else
-      @surveys = Survey.where(private: false).page(params[:page]).per_page(10).includes(:user)
+      @surveys = Survey.publics.page(params[:page]).per_page(10).includes(:user)
     end
   end
 

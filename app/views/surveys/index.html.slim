@@ -7,7 +7,7 @@
     div.search
       = form_tag surveys_path, class: "form-inline", method: :get do
         .form-group
-          = text_field_tag :query, params[:query], class: "form-control"
+          = text_field_tag :query, params[:query], class: "form-control", placeholder: "Search"
         '
         = submit_tag "Search", class: "btn"
         - if params[:query].present?
