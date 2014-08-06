@@ -9,7 +9,7 @@ class SurveysController < ApplicationController
     else
       @surveys = Survey.publics.page(params[:page]).per_page(10).includes(:user)
     end
-    if @surveys.blank?
+    if @surveys.empty?
       flash.now[:notice] = "No match found!"
     end
   end
