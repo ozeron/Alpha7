@@ -1,7 +1,13 @@
-= f.label :title, "Survey name"
-  = f.text_field :title
-  = f.fields_for :questions do |builder|
-    = render partial: 'question_fields', locals: { f: builder }
-  = link_to_add_fields "Add Question", f, :questions
-  br
-  =f.submit
+= simple_form_for @survey do |f|
+  .row
+    h4 Enter Title
+    =f.input :title, placeholder:"Enter Survey Title"
+  .row
+    =f.input :private, as: :radio_buttons 
+  .row
+    = f.fields_for :questions do |builder|
+      = render partial: 'question_fields', locals: { f: builder }
+    = link_to_add_fields "Add Question", f, :questions
+    br
+  .row
+    =f.button :submit

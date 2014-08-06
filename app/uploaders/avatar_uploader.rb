@@ -3,8 +3,8 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
-  storage :file
-   
+  storage :fog
+
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "images/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -40,7 +40,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def secure_token
     var = :"@#{mounted_as}_secure_token"
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
-  end 
+  end
 
 
 end

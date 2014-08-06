@@ -21,11 +21,11 @@ class SurveysController < ApplicationController
       redirect_to '/users/sign_in', notice: 'You need to sign in to create a survey!'
     end
   end
-  
+
   def create
     @survey = current_user.surveys.new(survey_params)
     if @survey.save
-      redirect_to surveys_path
+      redirect_to my_surveys_path
     else
       render :new
     end
@@ -33,21 +33,21 @@ class SurveysController < ApplicationController
 
   def update
     if @survey.update(survey_params)
-      redirect_to surveys_path, notice: 'Edited survey!'
+      redirect_to my_surveys_path, notice: 'Edited survey!'
     else
       render :edit
     end
   end
-  
+
   def destroy
     @survey.destroy
-    redirect_to surveys_path, notice: 'Deleted survey!'
+    redirect_to my_surveys_path, notice: 'Deleted survey!'
   end
 
   # def find_survey
   #   @survey = Survey.find[params[:id]]
   # end
-  
+
   private
 
   def survey_params

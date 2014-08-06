@@ -25,6 +25,8 @@ html lang="en"
                   =link_to current_user.full_name
                   ul.dropdown
                     li
+                      =link_to "My Surveys!", my_surveys_path
+                    li
                       =link_to "Edit Profile", edit_user_registration_path
               -else
                 li
