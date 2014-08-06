@@ -4,7 +4,11 @@ class SurveysController < ApplicationController
   authorize_resource
 
   def index
-    @surveys = Survey.where(private: false).page(params[:page]).per_page(10).includes(:user)
+    if params[:query].present?
+      @surveys = Survey.search(params[:query], page: params[:page])
+    else
+      @surveys = Survey.where(private: false).page(params[:page]).per_page(10).includes(:user)
+    end
   end
 
   def show
