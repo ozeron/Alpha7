@@ -22,6 +22,8 @@ gem 'compass-rails'
 gem 'foundation-rails'
 gem 'will_paginate'
 gem 'cancancan'
+gem 'searchkick'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'
