@@ -1,0 +1,17 @@
+.row
+  .small-12.column
+    h1
+      |My Surveys
+  .small-12.column
+    =link_to "Add one more!", new_survey_path, class: "row button small-12 column radius"
+
+    #surveys.small-12.column
+      -if @surveys[:private].size > 0
+        h2 Private Surveys:
+        =render @surveys[:private]
+      -if @surveys[:public].size > 0
+        h2 Public Surveys:
+        =render @surveys[:public]
+        
+
+

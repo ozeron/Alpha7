@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 
   def full_name
     fn = "#{first_name} #{last_name}"
-    return email  if fn.empty?
+    return email  if fn.blank?
     fn.lstrip.rstrip
   end
 
