@@ -1,1 +1,2 @@
-= render 'form'
+=form_for @survey do |f|
+  = render partial: 'form', locals: { f: f }

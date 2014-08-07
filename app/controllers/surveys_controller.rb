@@ -14,9 +14,6 @@ class SurveysController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def new
     if current_user
       @survey = Survey.new
@@ -26,15 +23,12 @@ class SurveysController < ApplicationController
   end
   
   def create
-    @survey = current_user.surveys.new( survey_params)
+    @survey = current_user.surveys.new(survey_params)
     if @survey.save
       redirect_to surveys_path
     else
       render :new
     end
-  end
-
-  def edit
   end
 
   def update
@@ -49,11 +43,22 @@ class SurveysController < ApplicationController
     @survey.destroy
     redirect_to surveys_path, notice: 'Deleted survey!'
   end
+
+  # def find_survey
+  #   @survey = Survey.find[params[:id]]
+  # end
   
   private
 
   def survey_params
-    params.require(:survey).permit(:title)
+    params.require(:survey).permit!#(:title, questions_attributes: question_params)
   end
 
+  def question_params
+    [:id, :text, :kind, :_destroy]
+  end
+
+  def variant_params
+    [:id, :text, :_destroy]
+  end
 end

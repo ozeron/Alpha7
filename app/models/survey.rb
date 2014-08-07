@@ -4,6 +4,8 @@ class Survey < ActiveRecord::Base
   has_many :answers, :through => :questions, inverse_of: :survey
   has_many :pictures, :as => :imagealbe
 
+  accepts_nested_attributes_for :questions, allow_destroy: true
+
   searchkick word_start: [:title]
 
   scope :publics, -> { where(private: false) }
