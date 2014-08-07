@@ -20,9 +20,11 @@ gem 'faker', '~> 1.4.2'
 gem 'slim'
 gem 'compass-rails'
 gem 'foundation-rails'
+gem 'simple_form'
 gem 'will_paginate'
 gem 'cancancan'
 gem 'searchkick'
+gem 'fog'
 
 group :development, :test do
   gem 'pry-rails'

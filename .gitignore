@@ -23,7 +23,9 @@ doc/
 .DS_Store
 .idea
 .secret
+*.orig
 *.sublime-*
 /public/images/tmp
 /public/images/uploads
 /public/uploads
+/config/local_env.yml

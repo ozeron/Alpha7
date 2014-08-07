@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe SurveysController, :type => :controller do
 
-  context "autorized user " do 
+  context "autorized user " do
     let(:user) {FactoryGirl.create(:user)}
     subject {FactoryGirl.create(:survey, user: user)}
 
     before do
       sign_in user
-    end	
+    end
 
     describe "GET #index" do
       it "render :index view" do
@@ -31,7 +31,7 @@ RSpec.describe SurveysController, :type => :controller do
         expect(response).to render_template :show
       end
     end
-	
+
     describe "GET #new" do
       it "assigns the requested survey to the subject" do
         get :new
@@ -51,7 +51,7 @@ RSpec.describe SurveysController, :type => :controller do
       end
       it "redirects to surveys path" do
         post :create, survey: FactoryGirl.attributes_for(:survey, user: :user)
-        expect(response).to redirect_to surveys_path
+        expect(response).to redirect_to my_surveys_path
       end
     end
 
@@ -60,37 +60,37 @@ RSpec.describe SurveysController, :type => :controller do
         get :edit, id: subject
         expect(assigns(:survey)).to eq(subject)
       end
-      it "renders the :edit view" do 
+      it "renders the :edit view" do
         get :edit, id: subject
         expect(response).to render_template :edit
       end
     end
 
-    describe "PATCH #update" do 
+    describe "PATCH #update" do
       context "with valid attributes" do
         it "updates object" do
           expect {
             patch :update, id: subject, survey: {title: 'Best Survey'}
           }.to change{ subject.reload.title }.to('Best Survey')
         end
-        it "redirects to index path" do 
+        it "redirects to index path" do
           patch :update, id:subject , survey: {title: 'Best Survey' }
-          expect(response).to redirect_to surveys_path
-        end  
+          expect(response).to redirect_to my_surveys_path
+        end
       end
     end
-    describe "DELETE #destroy" do 
+    describe "DELETE #destroy" do
       before(:each) {@survey = FactoryGirl.create :survey, user: user}
 
-      it  "deletes the survey" do 
+      it  "deletes the survey" do
         expect {
           delete :destroy, id: @survey
         }.to change(Survey, :count).by(-1)
       end
       it "redirects to survey#index" do
        delete :destroy, id: @survey
-       expect(response).to redirect_to surveys_path
-      end	
+       expect(response).to redirect_to my_surveys_path
+      end
     end
   end
 
