@@ -1,8 +1,4 @@
-= simple_form_for @survey do |f|
-  .row
-    h4 Enter Title
-    =f.input :title, placeholder:"Enter Survey Title"
-  .row
-    =f.input :private, as: :radio_buttons
-  .row
-    =f.button :submit
+= form_for @survey do |f|
+  =f.label :title, class: ""
+  =f.text_field :title, placeholder:"Enter Survey Title"
+  =f.submit

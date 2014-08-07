@@ -7,14 +7,13 @@ br
       =link_to "Take It!", survey_path(survey), class: "button radius small-12"
       - if can? :update, survey
         =link_to "Edit!", edit_survey_path(survey), class: "button radius small-12"
-      - if !survey.private? || can?( :share, survey)
-        = link_to "Share",sharing_index_path(id:survey.id),method: :post, class: "button small-12 radius"
       - if can? :destroy, survey
         =link_to "Destroy!", survey_path(survey), method: :delete, data: {confirm: 'sure?'}, class: "button small-12 radius"
-  .row
+  .row			
     p.small-4.column
       =image_tag survey.user.avatar.url(:small_thumb)
-      = survey.user.full_name
-
+      |      
+      = survey.user.full_name	
+		
 
 

@@ -10,7 +10,7 @@ class Ability
       can [:read], :all
       can [:new], Survey
       can [:create], Survey unless user.id.nil?
-      can [:update, :destroy,:share], Survey do |survey|
+      can [:update, :destroy], Survey do |survey|
         survey.try(:user) == user
       end
     end

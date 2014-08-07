@@ -24,7 +24,7 @@ class SurveysController < ApplicationController
       redirect_to '/users/sign_in', notice: 'You need to sign in to create a survey!'
     end
   end
-
+  
   def create
     @survey = current_user.surveys.new( survey_params)
     if @survey.save
@@ -44,14 +44,16 @@ class SurveysController < ApplicationController
       render :edit
     end
   end
-
+  
   def destroy
     @survey.destroy
     redirect_to surveys_path, notice: 'Deleted survey!'
   end
+  
+  private
 
   def survey_params
-    params.require(:survey).permit(:title,:private)
+    params.require(:survey).permit(:title)
   end
 
 end
