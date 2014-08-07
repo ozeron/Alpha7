@@ -15,6 +15,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
    "/images/default/" + [version_name, "user_default.png"].compact.join('_')
   end
 
+  def filename
+    "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
+
   # Process files as they are uploaded:
   process :resize_to_fit => [150, 150]
 
@@ -27,7 +31,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [20, 20]
   end
   # Add a white list of extensions which are allowed to be uploaded.
-   def extension_white_list
+  def extension_white_list
      %w(jpg jpeg gif png)
-   end
+  end
+
+  protected
+
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end 
+
+
 end
