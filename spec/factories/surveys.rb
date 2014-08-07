@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :survey do
     title { Faker::Lorem.sentence }
-    private { false }
     association :user, factory: :user
   end
 end
