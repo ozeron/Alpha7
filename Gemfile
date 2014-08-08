@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.2'
 gem 'rails', '4.1.1'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -24,8 +24,8 @@ gem 'simple_form'
 gem 'will_paginate'
 gem 'cancancan'
 gem 'searchkick'
-gem 'fog'
-
+gem 'carrierwave-aws'
+gem 'figaro'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'

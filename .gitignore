@@ -29,3 +29,6 @@ doc/
 /public/images/uploads
 /public/uploads
 /config/local_env.yml
+
+# Ignore application configuration
+/config/application.yml

@@ -3,10 +3,10 @@
     h1
       |My Surveys
   .column
-    -if surveys_empty?
-        h3 Create your first Survey!
+    -if current_user.surveys.empty?
+        h3 Create your first Survey now!
     .column
-      =link_to "Add one more!", new_survey_path, class: "row button small-12 column radius"
+      =link_to "Create new survey!", new_survey_path, class: "row button small-12 column radius"
 
     #surveys.small-12.column
       -if @surveys[:private].size > 0

@@ -18,7 +18,7 @@ class SurveysController < ApplicationController
     if current_user
       @survey = Survey.new
     else
-      redirect_to '/users/sign_in', notice: 'You need to sign in to create a survey!'
+      redirect_to :new_user_session, notice: 'You need to sign in to create a survey!'
     end
   end
 
@@ -51,7 +51,9 @@ class SurveysController < ApplicationController
   private
 
   def survey_params
-    params.require(:survey).permit!#(:title, questions_attributes: question_params)
+    params.require(:survey).permit!
+    #TODO
+    #Permit. :title, questions_attributes: question_params
   end
 
   def question_params

@@ -3,7 +3,7 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
-  storage :fog
+  storage :aws
 
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
