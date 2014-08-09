@@ -4,7 +4,15 @@
       |Surveys
   .small-12.column
     =link_to "Create Your own!", new_survey_path, class: "row button small-12 column radius"
-
+    div.search
+      = form_tag surveys_path, class: "form-inline", method: :get do
+        .form-group
+          = text_field_tag :query, params[:query], class: "form-control", placeholder: "Search"
+        '
+        = submit_tag "Search", class: "btn"
+        - if params[:query].present?
+          '
+          = link_to "clear", surveys_path
     #surveys.small-12.column
       =render @surveys
     br

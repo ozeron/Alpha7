@@ -8,6 +8,7 @@ class ProfilesController < Devise::RegistrationsController
     else
       params[:user].delete(:current_password)
       @user.update_without_password(account_update_params)
+
     end
 
     if successfully_updated
@@ -20,13 +21,13 @@ class ProfilesController < Devise::RegistrationsController
   end
 
   private
- 
+
   def sign_up_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
- 
+
   def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :gender, :birthday, :avatar, :avatar_cache, :remove_avatar)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :gender, :birthday, :avatar, :avatar_cache, :remove_avatar, :valid_date?)
   end
 
   def after_update_path_for(resource)

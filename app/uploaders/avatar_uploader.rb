@@ -3,8 +3,8 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
-  storage :file
-   
+  storage :aws
+
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "images/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -13,6 +13,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
    "/images/default/" + [version_name, "user_default.png"].compact.join('_')
+  end
+
+  def filename
+    "#{secure_token}.#{file.extension}" if original_filename.present?
   end
 
   # Process files as they are uploaded:
@@ -27,7 +31,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [20, 20]
   end
   # Add a white list of extensions which are allowed to be uploaded.
-   def extension_white_list
+  def extension_white_list
      %w(jpg jpeg gif png)
-   end
+  end
+
+  protected
+
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
+
+
 end

@@ -1,14 +1,18 @@
 language: ruby
 rvm:
-  - 2.1.2
+- 2.1.2
 env:
+  matrix:
   - DB=postgresql
+  global:
+  - secure: QMj87p6FMbqDgApdYBekVE6YBGRYiai6RxTzZjjmpNcS2990k9aA0/lG/Rle30hsGwoAGfqGDGddeFMn6RUO3VS3eXvPOcbmP4gT+g+jFwl/RItMpGJ2UER8X6VN+186qzS3KY7tvFdbyYSBo2QqkOQ7MkUn4ifFfUuxbfDPynw=
+  - secure: 1WduLqNWCD2f5der0Z1qpqSJ2gOrS5suz2Li1mMRjhKKajaDeIhwOrINX3jbU6TxaejQFFfP4FYFvrg2UN6U3YXW6V8GBcRbO7x9t/wZ9kiOIMf6ngYVUEb+eXSDZHLzHW0OAfHrfSiAbwx5PXUr/UoXeLvhdt8TZLUtuKYEwKM=
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake
 before_script:
-  - cp config/database.yml.sample config/database.yml
-  - psql -c 'create database alpha7_test' -U postgres
+- cp config/database.yml.sample config/database.yml
+- psql -c 'create database alpha7_test' -U postgres
 deploy:
   provider: heroku
   api_key:
@@ -17,4 +21,4 @@ deploy:
   on:
     repo: tetianahogg/Alpha7
     branch: dev
-  run: "rake db:migrate"
+  run: rake db:migrate

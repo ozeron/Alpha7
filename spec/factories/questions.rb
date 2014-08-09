@@ -5,10 +5,10 @@ FactoryGirl.define do
     association :survey, factory: :survey
 
     factory :question_with_variants do
-      kind { [:check, :radio, :scale].sample }
+      kind { [:check, :radio].sample }
     end
     factory :question_without_variants do
-      kind { [:label, :text, :paragraph].sample }
+      kind { [:text].sample }
     end
   end
 end
