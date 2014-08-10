@@ -1,3 +1,12 @@
 .row
   h1.column
     = @survey.title
+  column
+    =form_for @survey, url: submit_survey_path(@survey) do |f|
+      -@survey.questions.each_with_index do |question, index|
+        =f.fields_for question do |b|
+          fieldset
+            = b.label :text, "#{question.text}"
+            = b.fields_for :answers do |builder|
+              =render 'answer_fields', f: builder, id: index
+      =f.button :submit

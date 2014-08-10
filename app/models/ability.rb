@@ -8,7 +8,7 @@ class Ability
       can :manage, :all
     else
       can [:read], :all
-      can [:new], Survey
+      can [:new, :submit], Survey
       can [:create], Survey unless user.id.nil?
       can [:update, :destroy,:share], Survey do |survey|
         survey.try(:user) == user
