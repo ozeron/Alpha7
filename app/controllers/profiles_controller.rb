@@ -20,6 +20,13 @@ class ProfilesController < Devise::RegistrationsController
     end
   end
 
+  def generate_new_password_email
+    user = User.find(params[:user_id])
+    user.send_reset_password_instructions
+    flash[:notice] = "reset send"
+    redirect_to root_path
+  end
+
   private
 
   def sign_up_params
