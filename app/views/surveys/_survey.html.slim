@@ -11,6 +11,7 @@ br
         = link_to "Share",sharing_index_path(id:survey.id),method: :post, class: "button small-12 radius"
       - if can? :destroy, survey
         =link_to "Destroy!", survey_path(survey), method: :delete, data: {confirm: 'sure?'}, class: "button small-12 radius"
+        = link_to "Show all answers", survey_path(survey), method: :show_answers
   .row
     p.small-4.column
       =image_tag survey.user.avatar.url(:small_thumb)

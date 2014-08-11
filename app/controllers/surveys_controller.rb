@@ -47,13 +47,8 @@ class SurveysController < ApplicationController
   end
 
   def submit
-    data = params.require(:survey).require(:answers).permit!
-    if data
-      data.each_with_index do |data,index|
-        id = data.first.to_i
-        text = data.last
-        Answer.create(question: @survey.questions[id], text: text, answerer: current_user)
-      end
+    @answer = Answer.create(answer_params)
+    if @answer.save
       redirect_to root_path, notice: "Thank you for your answer! Take One more Survey!"
     else
       redirect_to session[:previous_url], notice: "Something goes wrong, try again!"
@@ -73,12 +68,10 @@ class SurveysController < ApplicationController
 
   def survey_params
     params.require(:survey).permit!
-    #TODO
-    #Permit. :title, questions_attributes: question_params
   end
 
   def answer_params
-    params.require(:survey).permit!
+    [:id, :text, :_destroy].permit!
   end
 
   def question_params

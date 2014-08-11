@@ -4,6 +4,7 @@ class Question < ActiveRecord::Base
   has_many :variants, inverse_of: :question, dependent: :destroy
   has_many :pictures, as: :imageable
   accepts_nested_attributes_for :variants, allow_destroy: true
+  accepts_nested_attributes_for :answers, allow_destroy: true
 
   extend Enumerize
   enumerize :kind, in: { text:0, check:1, radio:2 }

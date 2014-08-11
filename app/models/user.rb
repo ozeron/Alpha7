@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one :picture
   has_many :surveys, inverse_of: :user, dependent: :destroy
   has_many :answers, inverse_of: :user
+  accepts_nested_attributes_for :answers, allow_destroy: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
