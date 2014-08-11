@@ -26,6 +26,7 @@ gem 'cancancan'
 gem 'searchkick'
 gem 'carrierwave-aws'
 gem 'figaro'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'

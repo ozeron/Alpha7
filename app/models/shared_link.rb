@@ -1,5 +1,5 @@
 class SharedLink < ActiveRecord::Base
-  belongs_to :survey, inverse_of: :shared_links
+  belongs_to :survey, inverse_of: :shared_link
   validates_uniqueness_of :key
   after_create :create_key
 

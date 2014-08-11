@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   extend Enumerize
 
   has_one :picture
-  has_many :surveys, inverse_of: :user
+  has_many :surveys, inverse_of: :user, dependent: :destroy
   has_many :answers, inverse_of: :user
 
   devise :database_authenticatable, :registerable,
@@ -15,12 +15,11 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-  validates :first_name, :last_name, 
-            format: { with: /\A[A-Za-z\D]+\z/ }, 
-            length: { maximum: 255 }, 
+  validates :first_name, :last_name,
+            format: { with: /\A[A-Za-z\D]+\z/ },
+            length: { maximum: 255 },
             allow_blank: true
   validates :avatar, file_size: { maximum: 2.megabytes.to_i }
-  
   validates :birthday, format: { with: /\A[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])+\z/ }, allow_blank: true
 
   def full_name
