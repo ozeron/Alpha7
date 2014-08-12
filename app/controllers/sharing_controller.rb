@@ -4,9 +4,9 @@ class SharingController < ApplicationController
     survey = Survey.find(params[:id])
     authorize! :share, survey if survey.private?
 
-    sh = suvey.shared_link
+    sh = survey.shared_link
     sh ||= SharedLink.create(survey: survey)
-    @url_txt = request.original_url.split("?")[0] + "/#sh.key"
+    @url_txt = request.original_url.split("?")[0] + "/#{sh.key}"
   end
 
   def show
