@@ -10,7 +10,7 @@ class SurveysController < ApplicationController
       @surveys = Survey.publics.page(params[:page]).per_page(10).includes(:user)
     end
     if @surveys.empty?
-      flash.now[:notice] = "No match found!"
+      flash.now[:notice] = "No survey found!"
     end
   end
 
@@ -20,7 +20,6 @@ class SurveysController < ApplicationController
       1.times { question.answers.build}
     end
   end
-
   def new
     if current_user
       @survey = Survey.new
@@ -32,7 +31,7 @@ class SurveysController < ApplicationController
   def create
     @survey = current_user.surveys.new(survey_params)
     if @survey.save
-      redirect_to my_surveys_path
+      redirect_to default_path
     else
       render :new
     end
@@ -40,19 +39,32 @@ class SurveysController < ApplicationController
 
   def update
     if @survey.update(survey_params)
-      redirect_to my_surveys_path, notice: 'Edited survey!'
+      redirect_to default_path, notice: 'Edited survey!'
     else
       render :edit
     end
   end
 
+  def destroy
+    @survey.destroy
+    redirect_to default_path, notice: 'Deleted survey!'
+  end
+
   def submit
     data = params.require(:survey).require(:answers).permit!
     if data
+      response = Response.create(survey: @survey, answerer: current_user)
       data.each_with_index do |data,index|
         id = data.first.to_i
         text = data.last
-        Answer.create(question: @survey.questions[id], text: text, answerer: current_user)
+        answer = response.answers.build(question: @survey.questions[id], text: text)
+        if answer.valid?
+          answer.save!
+        else
+          redirect_to session[:previous_url], notice: "Answer" + answer.errors.full_messages.first
+          response.destroy
+          return
+        end
       end
       redirect_to root_path, notice: "Thank you for your answer! Take One more Survey!"
     else
@@ -60,17 +72,20 @@ class SurveysController < ApplicationController
     end
   end
 
-  def destroy
-    @survey.destroy
-    redirect_to my_surveys_path, notice: 'Deleted survey!'
+  def result
+    @survey = Survey.where(id: params[:id]).includes(responses: :answers).first
+    authorize! :result, @survey
   end
+
 
   # def find_survey
   #   @survey = Survey.find[params[:id]]
   # end
 
   private
-
+  def default_path
+    session[:unique_previous_url] || my_surveys_path
+  end
   def survey_params
     params.require(:survey).permit!
     #TODO

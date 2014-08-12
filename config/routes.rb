@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :surveys do
     member do
       patch 'submit', action: :submit
+      get 'result'
     end
   end
   resources :sharing, only:[:show, :create]

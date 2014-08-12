@@ -5,6 +5,8 @@ br
       h4= survey.title
     .small-12.medium-3.large-2.column
       =link_to "Take It!", survey_path(survey), class: "button radius small-12"
+      - if can? :result, survey
+        =link_to "Results!", result_survey_path(survey), class: "button radius small-12"
       - if can? :update, survey
         =link_to "Edit!", edit_survey_path(survey), class: "button radius small-12"
       - if !survey.private? || can?( :share, survey)

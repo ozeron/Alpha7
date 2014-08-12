@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   has_one :picture
   has_many :surveys, inverse_of: :user, dependent: :destroy
-  has_many :answers, inverse_of: :user
+  has_many :responses, inverse_of: :answerer
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
