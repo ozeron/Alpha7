@@ -26,6 +26,7 @@ gem 'cancancan'
 gem 'searchkick'
 gem 'carrierwave-aws'
 gem 'figaro'
+gem 'foundation-rails-confirm'
 
 group :development, :test do
   gem 'pry-rails'

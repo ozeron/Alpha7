@@ -95,6 +95,7 @@ GEM
     foundation-rails (5.3.3.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    foundation-rails-confirm (0.0.1)
     fssm (0.2.10)
     hashie (3.2.0)
     hike (1.2.3)
@@ -251,6 +252,7 @@ DEPENDENCIES
   faker (~> 1.4.2)
   figaro
   foundation-rails
+  foundation-rails-confirm
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
