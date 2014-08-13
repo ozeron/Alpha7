@@ -1,0 +1,12 @@
+table.row
+  thead
+    tr
+     - @survey.questions.each do |question|
+        th=question.text
+  tbody
+    - @survey.responses.each do |response|
+      tr
+        - response.answers.each do |answer|
+          td=answer.text
+-if @survey.responses.empty?
+  p.panel.row No responses for this survey!

@@ -8,5 +8,6 @@
           fieldset
             = b.label :text, "#{question.text}"
             = b.fields_for :answers do |builder|
-              =render 'answer_fields', f: builder, id: index
-      =f.button :submit
+              =render 'surveys/answer_fields', f: builder, id: index
+      - if @survey.questions.any?
+        =f.button :submit

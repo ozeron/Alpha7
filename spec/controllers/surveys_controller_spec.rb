@@ -92,15 +92,30 @@ RSpec.describe SurveysController, :type => :controller do
        expect(response).to redirect_to my_surveys_path
       end
     end
+    describe "GET #results" do
+      it "assigns the requested survey to the subject" do
+        get :result, id:subject
+        expect(assigns(:survey)).to eq(subject)
+      end
+      it "renders the :result view" do
+        get :result, id: subject
+        expect(response).to render_template :result
+      end
+    end
+
   end
 
   context "unautorized user" do
     let(:user) {FactoryGirl.create(:user)}
     subject {FactoryGirl.create(:survey, user: user)}
     describe "should redirect to user/sign_in" do
-      it "renders the :sign_in view" do
+      it "new renders the :sign_in view" do
         get :new, id: subject
         expect(response).to redirect_to '/users/sign_in'
+      end
+      it "result renders the :sign_in view" do
+        get :result, id: subject
+        expect(response).to redirect_to '/'
       end
     end
   end
