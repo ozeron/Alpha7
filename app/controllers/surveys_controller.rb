@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
 
-  load_resource  only: [:show, :edit, :update, :destroy]
+  load_resource  only: [:edit, :update, :destroy, :submit]
   authorize_resource
 
   def index
@@ -11,6 +11,13 @@ class SurveysController < ApplicationController
     end
     if @surveys.empty?
       flash.now[:notice] = "No match found!"
+    end
+  end
+
+  def show
+    @survey = Survey.where(id: params[:id]).includes(:questions).first
+    @survey.questions.each do |question|
+      1.times { question.answers.build}
     end
   end
 
@@ -39,6 +46,20 @@ class SurveysController < ApplicationController
     end
   end
 
+  def submit
+    data = params.require(:survey).require(:answers).permit!
+    if data
+      data.each_with_index do |data,index|
+        id = data.first.to_i
+        text = data.last
+        Answer.create(question: @survey.questions[id], text: text, answerer: current_user)
+      end
+      redirect_to root_path, notice: "Thank you for your answer! Take One more Survey!"
+    else
+      redirect_to session[:previous_url], notice: "Something goes wrong, try again!"
+    end
+  end
+
   def destroy
     @survey.destroy
     redirect_to my_surveys_path, notice: 'Deleted survey!'
@@ -54,6 +75,10 @@ class SurveysController < ApplicationController
     params.require(:survey).permit!
     #TODO
     #Permit. :title, questions_attributes: question_params
+  end
+
+  def answer_params
+    params.require(:survey).permit!
   end
 
   def question_params

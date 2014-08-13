@@ -3,7 +3,7 @@
     h4 Enter Title
     =f.input :title, placeholder:"Enter Survey Title"
   .row
-    =f.input :private, as: :radio_buttons 
+    =f.input :private, as: :radio_buttons
   .row
     = f.fields_for :questions do |builder|
       = render partial: 'question_fields', locals: { f: builder }

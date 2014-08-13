@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'profiles' }
 
   resources :surveys do
+    member do
+      patch 'submit', action: :submit
+    end
   end
   resources :sharing, only:[:show, :create]
   resources :my_surveys, only: [:index]
