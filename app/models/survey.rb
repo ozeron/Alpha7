@@ -8,6 +8,7 @@ class Survey < ActiveRecord::Base
   accepts_nested_attributes_for :questions, allow_destroy: true, reject_if: lambda { |h| h[:text].blank? }
 
   validates :title, presence: true
+  validates :title, length: {maximum: 255}
   validates_associated :user
   searchkick word_start: [:title]
 
