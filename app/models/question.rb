@@ -1,7 +1,7 @@
 class Question < ActiveRecord::Base
   belongs_to :survey, inverse_of: :questions
-  has_many :answers, inverse_of: :question, dependent: :destroy
   has_many :variants, inverse_of: :question, dependent: :destroy
+  has_many :answers, inverse_of: :question
   has_many :pictures, as: :imageable
   accepts_nested_attributes_for :variants, allow_destroy: true
 

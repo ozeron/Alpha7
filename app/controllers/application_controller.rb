@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
+    session[:unique_previous_url] = session[:previous_url] if session[:unque_previous_url] != session[:previous_url]
     session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users/
   end
 

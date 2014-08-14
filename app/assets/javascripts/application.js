@@ -13,10 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require foundation/rails/confirm
 //= require turbolinks
 //= require_tree .
 $(function(){ $(document).foundation(); });
 
-document.getElementById("user_avatar").onchange = function () {
-    document.getElementById("uploadFile").value = this.value;
-};
+$('#surveys .panel').addClass('paper');

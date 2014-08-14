@@ -3,6 +3,7 @@ fieldset
   = f.text_area :text
   = f.check_box :_destroy
   = f.label :_destroy, "Remove Question"
-  = f.fields_for :variants do |builder|
-    =render partial: 'variant_fields', locals: { f: builder }
-  =link_to_add_fields "Add Variant", f, :variants
+  //Todo: when variants will be implemented
+  //= f.fields_for :variants do |builder|
+  // =render partial: 'variant_fields', locals: { f: builder }
+  //=link_to_add_fields "Add Variant", f, :variants

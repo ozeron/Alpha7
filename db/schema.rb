@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20140812153233) do
   create_table "answers", force: true do |t|
     t.text     "text"
     t.integer  "question_id"
-    t.integer  "answerer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "response_id"
   end
 
   create_table "questions", force: true do |t|
@@ -32,7 +32,9 @@ ActiveRecord::Schema.define(version: 20140812153233) do
     t.datetime "updated_at"
   end
 
-  create_table "responces", force: true do |t|
+  create_table "responses", force: true do |t|
+    t.integer  "survey_id"
+    t.integer  "answerer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
