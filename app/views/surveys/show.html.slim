@@ -2,7 +2,7 @@
   h1.column
     = @survey.title
   column
-    =form_for @survey, url: submit_survey_path(@survey) do |f|
+    =form_for @survey, url: submit_survey_path(@survey), html: {class: "row"} do |f|
       -@survey.questions.each_with_index do |question, index|
         =f.fields_for question do |b|
           fieldset
