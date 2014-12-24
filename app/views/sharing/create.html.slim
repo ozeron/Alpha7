@@ -1,4 +1,6 @@
 .row
   .panel
     h4 Your Link is:
-    a href='#{@url_txt}' #{@url_txt}
+    a#sharing-link href='#{@url_txt}' #{@url_txt}
+    br
+    button.copy-button[data-clipboard-target="sharing-link"] Copy to ClipBoard

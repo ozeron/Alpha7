@@ -27,7 +27,7 @@ gem 'searchkick'
 gem 'carrierwave-aws'
 gem 'figaro'
 gem 'foundation-rails-confirm'
-
+gem 'zeroclipboard-rails'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'
