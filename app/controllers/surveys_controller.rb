@@ -32,7 +32,7 @@ class SurveysController < ApplicationController
     @survey = current_user.surveys.new(survey_params)
     if @survey.save
       flash[:success] = 'Survey was successfully created.'
-      redirect_to default_path
+      redirect_to my_surveys_path
     else
       flash[:error] = 'Survey should have Title and at least one question.'
       render :new
@@ -51,7 +51,7 @@ class SurveysController < ApplicationController
 
   def destroy
     @survey.destroy
-    redirect_to default_path, notice: 'Deleted survey!'
+    redirect_to surveys_path, notice: 'Deleted survey!'
   end
 
   def submit

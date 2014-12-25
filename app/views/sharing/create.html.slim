@@ -3,4 +3,5 @@
     h4 Your Link is:
     a#sharing-link href='#{@url_txt}' #{@url_txt}
     br
+    => link_to 'Back', surveys_path, class: "button secondary"
     button.copy-button[data-clipboard-target="sharing-link"] Copy to ClipBoard

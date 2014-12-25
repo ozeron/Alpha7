@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require foundation/rails/confirm
 //= require zeroclipboard
 //= require turbolinks
 //= require_tree .

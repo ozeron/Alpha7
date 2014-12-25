@@ -9,5 +9,5 @@
             = b.label :text, "#{question.text}"
             = b.fields_for :answers do |builder|
               =render 'surveys/answer_fields', f: builder, id: index
-      - if @survey.questions.any?
-        =f.button :submit
+      => link_to 'Back', surveys_path, class: "button secondary"
+      = f.button :submit

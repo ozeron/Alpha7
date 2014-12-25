@@ -44,13 +44,18 @@ RSpec.describe SurveysController, :type => :controller do
     end
 
     describe "create with valid attributes" do
+      let (:survey_attributes)  do
+        h = FactoryGirl.attributes_for(:survey, user: :user);
+        h[:questions_attributes] = {"1" => FactoryGirl.attributes_for(:question)}
+        h
+      end
       it "creates new object" do
         expect {
-          post :create, survey: FactoryGirl.attributes_for(:survey, user: :user)
+          post :create, survey: survey_attributes
         }. to change(Survey, :count ).by( 1)
       end
       it "redirects to surveys path" do
-        post :create, survey: FactoryGirl.attributes_for(:survey, user: :user)
+        post :create, survey: survey_attributes
         expect(response).to redirect_to my_surveys_path
       end
     end
@@ -89,7 +94,7 @@ RSpec.describe SurveysController, :type => :controller do
       end
       it "redirects to survey#index" do
        delete :destroy, id: @survey
-       expect(response).to redirect_to my_surveys_path
+       expect(response).to redirect_to surveys_path
       end
     end
     describe "GET #results" do
