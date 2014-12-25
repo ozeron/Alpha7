@@ -5,4 +5,5 @@ class Response < ActiveRecord::Base
   validates_associated :answers
   validates_associated :answerer
   validates_associated :survey
+
 end

@@ -11,7 +11,9 @@ class Survey < ActiveRecord::Base
   validates :title, length: {maximum: 255}
   validates_associated :user
   searchkick word_start: [:title]
-
+  validates  :questions, length: { minimum: 1 }
   scope :publics, -> { where(private: false) }
   scope :privates,  -> { where(private: true)}
+
+
 end

@@ -31,16 +31,20 @@ class SurveysController < ApplicationController
   def create
     @survey = current_user.surveys.new(survey_params)
     if @survey.save
+      flash[:success] = 'Survey was successfully created.'
       redirect_to default_path
     else
+      flash[:error] = 'Survey should have Title and at least one question.'
       render :new
     end
   end
 
   def update
     if @survey.update(survey_params)
+      flash[:success] = 'Survey was successfully created.'
       redirect_to default_path, notice: 'Edited survey!'
     else
+      flash[:error] = 'Survey should have Title and at least one question.'
       render :edit
     end
   end
@@ -61,7 +65,8 @@ class SurveysController < ApplicationController
         if answer.valid?
           answer.save!
         else
-          redirect_to session[:previous_url], notice: "Answer" + answer.errors.full_messages.first
+          flash[:notice] = "Answer" + answer.errors.full_messages.first
+          render :show
           response.destroy
           return
         end
